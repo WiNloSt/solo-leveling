@@ -1,0 +1,15 @@
+{
+  "name": "solo-leveling",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mahatthana (Kelvin) Nomsawadi <me@bboykelvin.dev>",
+  "license": "MIT",
+  "scripts": {
+    "scrapeChapters": "node scraper/scrapeChapters.js",
+    "generateChapters": "node scraper/generateChapters.js",
+    "extractChapters": "node scraper/extractChapters.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  }
+}

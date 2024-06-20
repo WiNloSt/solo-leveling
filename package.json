@@ -7,7 +7,8 @@
   "scripts": {
     "scrapeChapters": "node scraper/scrapeChapters.js",
     "generateChapters": "node scraper/generateChapters.js",
-    "extractChapters": "node scraper/extractChapters.js"
+    "extractChapters": "node scraper/extractChapters.js",
+    "extractChapterPages": "node scraper/extractChapterPages.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.12"

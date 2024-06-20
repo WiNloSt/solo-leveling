@@ -7,7 +7,7 @@ async function scrapeChapters() {
 
 /**
  *
- * @param {import('./types').Chapter} chapter
+ * @param {import('../types').Chapter} chapter
  */
 async function scrapeChapter(chapter) {
   const content = await fetch(`${chapter.link}`).then((res) => res.text())

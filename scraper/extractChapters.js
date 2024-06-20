@@ -1,7 +1,7 @@
 const cheerio = require('cheerio')
 const { getWriter, getReader } = require('./utils')
 
-async function extractChapters() {
+async function main() {
   const reader = getReader('data/chapters.html')
   const chaptersHtml = await reader.read()
   const $ = cheerio.load(chaptersHtml)
@@ -9,11 +9,20 @@ async function extractChapters() {
   const links = Array.from(allLinks)
     .reverse()
     .map((link) => {
-      return { name: $(link).text(), link: $(link).attr('href') }
+      return {
+        name: $(link).text(),
+        link: $(link).attr('href'),
+        number: extractChapterNumber($(link).text()),
+      }
     })
 
   const writer = getWriter('data/chapters.json')
   writer.write(JSON.stringify(links, null, 2))
 }
 
-extractChapters()
+function extractChapterNumber(chapterName) {
+  const [number] = chapterName.match(/(\d+(\.\d+)?)$/)
+  return parseFloat(number)
+}
+
+main()

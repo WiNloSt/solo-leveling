@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 export function Header() {
   return (
-    <header className="bg-white">
-      <nav className="mx-auto flex p-6 px-8" aria-label="Global">
+    <header className="bg-slate-100">
+      <nav className="mx-auto flex py-3 px-4 max-w-7xl" aria-label="Global">
         <div className="flex gap-x-12">
           <div className="relative">
             <Link href="/chapters">

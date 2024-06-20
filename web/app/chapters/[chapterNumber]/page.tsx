@@ -20,7 +20,16 @@ export default async function Chapter({
       <div className="flex flex-col items-center -mx-4">
         <Navigation next={nextPage} previous={previousPage} />
         {pages.map((page: string) => {
-          return <Image key={page} src={page} alt={`Page ${page}`} width={720} height={1000} />
+          return (
+            <Image
+              key={page}
+              src={page}
+              alt={`Page ${page}`}
+              width={720}
+              height={1000}
+              className="max-w-full md:max-w-lg xl:max-w-full"
+            />
+          )
         })}
         <Navigation next={nextPage} previous={previousPage} />
       </div>

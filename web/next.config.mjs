@@ -9,6 +9,22 @@ const nextConfig = {
       },
     ]
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'coffeemanga.io',
+        port: '',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cm.blazefast.co',
+        port: '',
+        pathname: '**',
+      },
+    ],
+  },
 }
 
 export default nextConfig

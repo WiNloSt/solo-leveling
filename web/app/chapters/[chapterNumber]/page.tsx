@@ -20,12 +20,12 @@ export default async function Chapter({
       <h1 className="text-xl">{chapter.name}</h1>
       <div className="flex flex-col items-center -mx-4">
         <Navigation next={nextPage} previous={previousPage} />
-        {pages.map((page: string) => {
+        {pages.map((page: string, index: number) => {
           return (
             <Image
               key={page}
               src={page}
-              alt={`Page ${page}`}
+              alt={`Page ${index + 1}`}
               width={720}
               height={1000}
               quality={85}

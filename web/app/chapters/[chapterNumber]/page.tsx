@@ -30,6 +30,7 @@ export default async function Chapter({
               quality={85}
               sizes="(max-width: 1279px) 540px, 100vw"
               className="max-w-full md:max-w-lg xl:max-w-full"
+              priority
             />
           )
         })}

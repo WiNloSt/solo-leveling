@@ -1,16 +1,18 @@
-import Image from 'next/image'
+import Image, { type ImageLoaderProps } from 'next/image'
 import Link from 'next/link'
 import chapters from '../../../../data/chapters.json'
 import type { Chapter } from '../../../../types'
 import classNames from 'classnames'
+import { ClientImage } from './ClientImage'
 
 export default async function Chapter({
   params: { chapterNumber },
 }: {
   params: { chapterNumber: string }
 }) {
-  const pages = (await import(`../../../../data/pages/Solo Leveling Chapter ${chapterNumber}.json`))
-    .default
+  const pageUrls = (
+    await import(`../../../../data/pages/Solo Leveling Chapter ${chapterNumber}.json`)
+  ).default
   const { nextPage, previousPage } = await getNavigation(parseFloat(chapterNumber))
   const chapter: Chapter = chapters.find(
     (chapter) => chapter.number === parseFloat(chapterNumber)
@@ -20,20 +22,8 @@ export default async function Chapter({
       <h1 className="text-xl">{chapter.name}</h1>
       <div className="flex flex-col items-center -mx-4">
         <Navigation next={nextPage} previous={previousPage} />
-        {pages.map((page: string, index: number) => {
-          return (
-            <Image
-              key={page}
-              src={page}
-              alt={`Page ${index + 1}`}
-              width={720}
-              height={1000}
-              quality={85}
-              sizes="(max-width: 1279px) 540px, 100vw"
-              className="max-w-full md:max-w-lg xl:max-w-full"
-              priority
-            />
-          )
+        {pageUrls.map((url: string, index: number) => {
+          return <ClientImage key={index} url={url} pageNumber={index + 1} />
         })}
         <Navigation next={nextPage} previous={previousPage} />
       </div>

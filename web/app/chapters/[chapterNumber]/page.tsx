@@ -27,6 +27,8 @@ export default async function Chapter({
               alt={`Page ${page}`}
               width={720}
               height={1000}
+              quality={85}
+              sizes="(max-width: 1279px) 540px, 100vw"
               className="max-w-full md:max-w-lg xl:max-w-full"
             />
           )

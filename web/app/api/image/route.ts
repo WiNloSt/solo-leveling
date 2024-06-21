@@ -32,8 +32,15 @@ export async function GET(request: NextRequest) {
   const metadata = await image.metadata()
   console.log({ metadata })
 
-  return new Response(processImage(image, { width, quality, metadata }) as any)
+  return new Response(processImage(image, { width, quality, metadata }) as any, {
+    headers: {
+      'Content-Type': 'image/jpeg',
+      'Cache-Control': `public, max-age=${30 * DAY};`,
+    },
+  })
 }
+
+const DAY = 24 * 60 * 60
 
 function processImage(
   image: Sharp,

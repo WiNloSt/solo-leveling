@@ -40,6 +40,6 @@ function processImage(
   { quality, width, metadata }: { quality: number; width: number; metadata: Metadata }
 ) {
   return image
-    .resize({ width: width > metadata.width ? metadata.width : width })
+    .resize({ width: width > (metadata.width || NaN) ? metadata.width : width })
     .jpeg({ quality: quality })
 }

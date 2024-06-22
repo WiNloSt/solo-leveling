@@ -1,7 +1,7 @@
 'use client'
 import type { Chapter } from '@/../types'
 import { ChapterImage } from './ChapterImage'
-import { useState } from 'react'
+import { useCallback, useState, type Dispatch, type SetStateAction } from 'react'
 import { LinkNoPrefetch } from '@/components/LinkNoPrefetch'
 import classNames from 'classnames'
 import Image from 'next/image'
@@ -26,26 +26,46 @@ export function ChapterContent({
       <div className="flex flex-col items-center -mx-4">
         <Navigation next={nextPage} previous={previousPage} />
         {pages.map((page, pageIndex) => {
-          const handlePageEnterViewport = () => {
-            setCurrentPage((prevPageIndex) =>
-              pageIndex > prevPageIndex ? pageIndex : prevPageIndex
-            )
-          }
           return (
-            <ChapterImage
+            <ChapterImageController
               key={pageIndex}
-              url={page.url}
-              width={page.width}
-              height={page.height}
-              pageNumber={pageIndex + 1}
-              onEnterViewport={handlePageEnterViewport}
-              priority={pageIndex <= currentPage + 1}
+              setCurrentPage={setCurrentPage}
+              pageIndex={pageIndex}
+              page={page}
+              currentPage={currentPage}
             />
           )
         })}
         <Navigation next={nextPage} previous={previousPage} />
       </div>
     </>
+  )
+}
+
+function ChapterImageController({
+  setCurrentPage,
+  pageIndex,
+  page,
+  currentPage,
+}: {
+  setCurrentPage: Dispatch<SetStateAction<number>>
+  pageIndex: number
+  page: ChapterPage
+  currentPage: number
+}) {
+  const handlePageEnterViewport = useCallback(() => {
+    setCurrentPage((prevPageIndex) => (pageIndex > prevPageIndex ? pageIndex : prevPageIndex))
+  }, [pageIndex, setCurrentPage])
+
+  return (
+    <ChapterImage
+      url={page.url}
+      width={page.width}
+      height={page.height}
+      pageNumber={pageIndex + 1}
+      onEnterViewport={handlePageEnterViewport}
+      priority={pageIndex <= currentPage + 2}
+    />
   )
 }
 

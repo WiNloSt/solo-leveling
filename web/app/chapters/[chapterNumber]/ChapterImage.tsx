@@ -59,15 +59,14 @@ function useIntersectionObserver(onEnterViewport: () => void) {
     )
 
     if (ref.current) {
+      const refNode = ref.current
       observer.observe(ref.current)
-    }
 
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current)
+      return () => {
+        observer.unobserve(refNode)
       }
     }
-  }, [])
+  }, [onEnterViewport])
 
   return ref
 }

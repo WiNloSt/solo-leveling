@@ -32,22 +32,25 @@ export async function GET(request: NextRequest) {
   const metadata = await image.metadata()
   console.log({ metadata })
 
-  return new Response(processImage(image, { width, quality, metadata }) as any, {
+  const { data, info } = await processImage(image, { width, quality, metadata })
+  return new Response(data, {
     status: 200,
     headers: {
       'Content-Type': 'image/jpeg',
       'Cache-Control': `public, max-age=${30 * DAY};`,
+      'Content-Length': info.size.toString(),
     },
   })
 }
 
 const DAY = 24 * 60 * 60
 
-function processImage(
+async function processImage(
   image: Sharp,
   { quality, width, metadata }: { quality: number; width: number; metadata: Metadata }
 ) {
   return image
     .resize({ width: width > (metadata.width || NaN) ? metadata.width : width })
     .jpeg({ quality: quality })
+    .toBuffer({ resolveWithObject: true })
 }

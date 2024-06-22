@@ -16,7 +16,9 @@ async function extractChapterPages(chapter) {
   const pages = Array.from($('.entry-content img'))
 
   const extractedPages = pages.map((page) => {
-    return $(page).attr('src')
+    const src = $(page).attr('src')
+    const dataSrc = $(page).attr('data-src')
+    return src ?? dataSrc
   })
 
   getWriter(`data/pages/${chapter.name}.json`).write(JSON.stringify(extractedPages, null, 2))

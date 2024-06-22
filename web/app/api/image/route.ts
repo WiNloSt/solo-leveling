@@ -33,6 +33,7 @@ export async function GET(request: NextRequest) {
   console.log({ metadata })
 
   return new Response(processImage(image, { width, quality, metadata }) as any, {
+    status: 200,
     headers: {
       'Content-Type': 'image/jpeg',
       'Cache-Control': `public, max-age=${30 * DAY};`,

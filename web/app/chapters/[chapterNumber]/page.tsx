@@ -1,10 +1,10 @@
-import Image, { type ImageLoaderProps } from 'next/image'
-import chapters from '../../../../data/chapters.json'
-import type { Chapter } from '../../../../types'
+import chapters from '@/../data/chapters.json'
+import type { Chapter } from '@/../types'
+import Image from 'next/image'
 import classNames from 'classnames'
 import { ClientImage } from './ClientImage'
 import type { Metadata } from 'next'
-import { LinkNoPrefetch } from '@/app/components/LinkNoPrefetch'
+import { LinkNoPrefetch } from '@/components/LinkNoPrefetch'
 
 interface ChapterParameters {
   chapterNumber: string

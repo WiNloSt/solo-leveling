@@ -1,6 +1,6 @@
-import chapters from '../../../data/chapters.json'
-import { Chapter } from '../../../types'
-import { LinkNoPrefetch } from '../components/LinkNoPrefetch'
+import { LinkNoPrefetch } from '@/components/LinkNoPrefetch'
+import chapters from '@/../data/chapters.json'
+import { Chapter } from '@/../types'
 
 export default function Chapters() {
   return (

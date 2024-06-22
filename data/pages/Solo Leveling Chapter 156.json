@@ -1,10 +1,82 @@
 [
-  "https://cm.blazefast.co/6d/60/6d60ec361d48d83c54c2a259388654c4.jpg",
-  "https://cm.blazefast.co/14/13/141397838c1fb7b9e500e6710aab05c0.jpg",
-  "https://cm.blazefast.co/24/ce/24ced07f03023c9770b6c76cff383cae.jpg",
-  "https://cm.blazefast.co/7e/ed/7eed21e32c281ad0b3e3416364d2b498.jpg",
-  "https://cm.blazefast.co/dd/4b/dd4b685d4263c45c0cf256131a345e40.jpg",
-  "https://cm.blazefast.co/c3/ba/c3ba1de7a25917f4806fd573d39e1e70.jpg",
-  "https://cm.blazefast.co/06/ee/06eecc0494941bdaf6af25302931c97d.jpg",
-  "https://cm.blazefast.co/4a/d8/4ad8e346aa56b27f584718b42ad56122.jpg"
+  {
+    "width": 720,
+    "height": 17966,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1005039,
+    "url": "https://cm.blazefast.co/6d/60/6d60ec361d48d83c54c2a259388654c4.jpg"
+  },
+  {
+    "width": 720,
+    "height": 17965,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1063593,
+    "url": "https://cm.blazefast.co/14/13/141397838c1fb7b9e500e6710aab05c0.jpg"
+  },
+  {
+    "width": 720,
+    "height": 19593,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1192037,
+    "url": "https://cm.blazefast.co/24/ce/24ced07f03023c9770b6c76cff383cae.jpg"
+  },
+  {
+    "width": 720,
+    "height": 19592,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1338918,
+    "url": "https://cm.blazefast.co/7e/ed/7eed21e32c281ad0b3e3416364d2b498.jpg"
+  },
+  {
+    "width": 720,
+    "height": 18991,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1329260,
+    "url": "https://cm.blazefast.co/dd/4b/dd4b685d4263c45c0cf256131a345e40.jpg"
+  },
+  {
+    "width": 720,
+    "height": 18991,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1270644,
+    "url": "https://cm.blazefast.co/c3/ba/c3ba1de7a25917f4806fd573d39e1e70.jpg"
+  },
+  {
+    "width": 720,
+    "height": 12901,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 859886,
+    "url": "https://cm.blazefast.co/06/ee/06eecc0494941bdaf6af25302931c97d.jpg"
+  },
+  {
+    "width": 720,
+    "height": 12900,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 813690,
+    "url": "https://cm.blazefast.co/4a/d8/4ad8e346aa56b27f584718b42ad56122.jpg"
+  }
 ]

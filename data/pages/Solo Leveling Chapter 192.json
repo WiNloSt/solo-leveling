@@ -1,12 +1,111 @@
 [
-  "https://i.ibb.co/0Yq09bc/solo-leveling-192-2.jpg",
-  "https://i.ibb.co/0M4pfZQ/solo-leveling-192-3.jpg",
-  "https://i.ibb.co/cCzxntC/solo-leveling-192-4.jpg",
-  "https://i.ibb.co/Xs3hBFj/solo-leveling-192-5.jpg",
-  "https://i.ibb.co/2jrqWy0/solo-leveling-192-6.jpg",
-  "https://i.ibb.co/Wcz4rqS/solo-leveling-192-7.jpg",
-  "https://i.ibb.co/D54YFSz/solo-leveling-192-8.jpg",
-  "https://i.ibb.co/xGd8jmD/solo-leveling-192-9.jpg",
-  "https://i.ibb.co/9nSwSJH/solo-leveling-192-10.jpg",
-  "https://i.ibb.co/HgWFhkv/solo-leveling-192-11.jpg"
+  {
+    "width": 720,
+    "height": 13320,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "orientation": 1,
+    "length": 1432157,
+    "url": "https://i.ibb.co/0Yq09bc/solo-leveling-192-2.jpg"
+  },
+  {
+    "width": 720,
+    "height": 13100,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "orientation": 1,
+    "length": 1272054,
+    "url": "https://i.ibb.co/0M4pfZQ/solo-leveling-192-3.jpg"
+  },
+  {
+    "width": 720,
+    "height": 12623,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "orientation": 1,
+    "length": 1252624,
+    "url": "https://i.ibb.co/cCzxntC/solo-leveling-192-4.jpg"
+  },
+  {
+    "width": 720,
+    "height": 12951,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "orientation": 1,
+    "length": 2690275,
+    "url": "https://i.ibb.co/Xs3hBFj/solo-leveling-192-5.jpg"
+  },
+  {
+    "width": 720,
+    "height": 12209,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "orientation": 1,
+    "length": 1385002,
+    "url": "https://i.ibb.co/2jrqWy0/solo-leveling-192-6.jpg"
+  },
+  {
+    "width": 720,
+    "height": 13136,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "orientation": 1,
+    "length": 1010907,
+    "url": "https://i.ibb.co/Wcz4rqS/solo-leveling-192-7.jpg"
+  },
+  {
+    "width": 720,
+    "height": 13500,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "orientation": 1,
+    "length": 1411705,
+    "url": "https://i.ibb.co/D54YFSz/solo-leveling-192-8.jpg"
+  },
+  {
+    "width": 720,
+    "height": 12186,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "orientation": 1,
+    "length": 848473,
+    "url": "https://i.ibb.co/xGd8jmD/solo-leveling-192-9.jpg"
+  },
+  {
+    "width": 720,
+    "height": 11637,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 856923,
+    "url": "https://i.ibb.co/9nSwSJH/solo-leveling-192-10.jpg"
+  },
+  {
+    "width": 720,
+    "height": 13208,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "orientation": 1,
+    "length": 1148022,
+    "url": "https://i.ibb.co/HgWFhkv/solo-leveling-192-11.jpg"
+  }
 ]

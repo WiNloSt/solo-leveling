@@ -8,6 +8,17 @@ interface ChapterParameters {
   chapterNumber: string
 }
 
+export interface ChapterPage {
+  width: number
+  height: number
+  type: string
+  mime: string
+  wUnits: string
+  hUnits: string
+  length: number
+  url: string
+}
+
 export async function generateMetadata({
   params: { chapterNumber },
 }: {
@@ -23,7 +34,7 @@ export default async function Chapter({
 }: {
   params: ChapterParameters
 }) {
-  const pageUrls = (
+  const pages: ChapterPage[] = (
     await import(`../../../../data/pages/Solo Leveling Chapter ${chapterNumber}.json`)
   ).default
   const { nextPage, previousPage } = await getNavigation(parseFloat(chapterNumber))
@@ -36,7 +47,7 @@ export default async function Chapter({
       chapter={chapter}
       nextPage={nextPage}
       previousPage={previousPage}
-      pageUrls={pageUrls}
+      pages={pages}
     />
   )
 }

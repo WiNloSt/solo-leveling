@@ -4,12 +4,21 @@ import { useEffect, useRef } from 'react'
 
 interface ClientImageProps {
   url: string
+  width: number | undefined
+  height: number | undefined
   pageNumber: number
   onEnterViewport: () => void
   priority: boolean
 }
 
-export function ChapterImage({ url, pageNumber, onEnterViewport, priority }: ClientImageProps) {
+export function ChapterImage({
+  url,
+  width = 720,
+  height = 2000,
+  pageNumber,
+  onEnterViewport,
+  priority,
+}: ClientImageProps) {
   const ref = useIntersectionObserver(onEnterViewport)
   return (
     <Image
@@ -18,8 +27,8 @@ export function ChapterImage({ url, pageNumber, onEnterViewport, priority }: Cli
       key={url}
       src={url}
       alt={`Page ${pageNumber}`}
-      width={720}
-      height={1000}
+      width={width}
+      height={height}
       quality={75}
       sizes="(max-width: 1279px) 540px, 100vw"
       className="max-w-lg xl:max-w-[720px] w-full"

@@ -1,10 +1,82 @@
 [
-  "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/02.png",
-  "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/03.png",
-  "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/04.png",
-  "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/05.png",
-  "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/06.png",
-  "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/07.png",
-  "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/08.png",
-  "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/09.png"
+  {
+    "width": 720,
+    "height": 5000,
+    "type": "png",
+    "mime": "image/png",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 2385679,
+    "url": "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/02.png"
+  },
+  {
+    "width": 720,
+    "height": 4000,
+    "type": "png",
+    "mime": "image/png",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1071554,
+    "url": "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/03.png"
+  },
+  {
+    "width": 720,
+    "height": 6040,
+    "type": "png",
+    "mime": "image/png",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 2052903,
+    "url": "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/04.png"
+  },
+  {
+    "width": 720,
+    "height": 4412,
+    "type": "png",
+    "mime": "image/png",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1621588,
+    "url": "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/05.png"
+  },
+  {
+    "width": 720,
+    "height": 6652,
+    "type": "png",
+    "mime": "image/png",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 718859,
+    "url": "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/06.png"
+  },
+  {
+    "width": 720,
+    "height": 5000,
+    "type": "png",
+    "mime": "image/png",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1882717,
+    "url": "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/07.png"
+  },
+  {
+    "width": 720,
+    "height": 7646,
+    "type": "png",
+    "mime": "image/png",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 2495450,
+    "url": "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/08.png"
+  },
+  {
+    "width": 720,
+    "height": 2419,
+    "type": "png",
+    "mime": "image/png",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 338606,
+    "url": "https://coffeemanga.io/wp-content/uploads/WP-manga/data/manga_61d89505add66/4b5fac6ae6eb24d28a826548ee2730ce/09.png"
+  }
 ]

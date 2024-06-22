@@ -5,17 +5,18 @@ import { useState } from 'react'
 import { LinkNoPrefetch } from '@/components/LinkNoPrefetch'
 import classNames from 'classnames'
 import Image from 'next/image'
+import type { ChapterPage } from './page'
 
 export function ChapterContent({
   chapter,
   nextPage,
   previousPage,
-  pageUrls,
+  pages,
 }: {
   chapter: Chapter
   nextPage: number
   previousPage: number
-  pageUrls: string[]
+  pages: ChapterPage[]
 }) {
   const [currentPage, setCurrentPage] = useState(0)
 
@@ -24,7 +25,7 @@ export function ChapterContent({
       <h1 className="text-xl">{chapter.name}</h1>
       <div className="flex flex-col items-center -mx-4">
         <Navigation next={nextPage} previous={previousPage} />
-        {pageUrls.map((url: string, pageIndex: number) => {
+        {pages.map((page, pageIndex) => {
           const handlePageEnterViewport = () => {
             setCurrentPage((prevPageIndex) =>
               pageIndex > prevPageIndex ? pageIndex : prevPageIndex
@@ -33,7 +34,9 @@ export function ChapterContent({
           return (
             <ChapterImage
               key={pageIndex}
-              url={url}
+              url={page.url}
+              width={page.width}
+              height={page.height}
               pageNumber={pageIndex + 1}
               onEnterViewport={handlePageEnterViewport}
               priority={pageIndex <= currentPage + 1}

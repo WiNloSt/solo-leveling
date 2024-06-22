@@ -1,9 +1,72 @@
 [
-  "https://cm.blazefast.co/ec/97/ec97fddeba08f96fdecb2e257eba100a.jpg",
-  "https://cm.blazefast.co/43/07/4307bf838178cd386404315c2fc17ef8.jpg",
-  "https://cm.blazefast.co/a2/71/a271989e23197af648b5987a2a0729ee.jpg",
-  "https://cm.blazefast.co/fe/fc/fefc81f68996d41c6d764674eac6cbde.jpg",
-  "https://cm.blazefast.co/ea/44/ea4481cbe2f62d8b4e05bf2841b7d8fa.jpg",
-  "https://cm.blazefast.co/a6/68/a668ce789ec002e943c1e07ac2eec37f.jpg",
-  "https://cm.blazefast.co/c3/20/c3204b822472edd27b1933247ff76184.jpg"
+  {
+    "width": 720,
+    "height": 19774,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1480873,
+    "url": "https://cm.blazefast.co/ec/97/ec97fddeba08f96fdecb2e257eba100a.jpg"
+  },
+  {
+    "width": 720,
+    "height": 19157,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1148646,
+    "url": "https://cm.blazefast.co/43/07/4307bf838178cd386404315c2fc17ef8.jpg"
+  },
+  {
+    "width": 720,
+    "height": 20207,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1185513,
+    "url": "https://cm.blazefast.co/a2/71/a271989e23197af648b5987a2a0729ee.jpg"
+  },
+  {
+    "width": 720,
+    "height": 19224,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1403463,
+    "url": "https://cm.blazefast.co/fe/fc/fefc81f68996d41c6d764674eac6cbde.jpg"
+  },
+  {
+    "width": 720,
+    "height": 19873,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1373772,
+    "url": "https://cm.blazefast.co/ea/44/ea4481cbe2f62d8b4e05bf2841b7d8fa.jpg"
+  },
+  {
+    "width": 720,
+    "height": 20257,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1276413,
+    "url": "https://cm.blazefast.co/a6/68/a668ce789ec002e943c1e07ac2eec37f.jpg"
+  },
+  {
+    "width": 720,
+    "height": 19723,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1414073,
+    "url": "https://cm.blazefast.co/c3/20/c3204b822472edd27b1933247ff76184.jpg"
+  }
 ]

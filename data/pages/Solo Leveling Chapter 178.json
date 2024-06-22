@@ -1,7 +1,52 @@
 [
-  "https://cm.blazefast.co/5f/4c/5f4c4df08b0cbd7faf8d0d526584057b.jpg",
-  "https://cm.blazefast.co/35/a7/35a76739a5793f2f5594f2d428900f61.jpg",
-  "https://cm.blazefast.co/07/35/07359f64d07cbe11c20da3c000570a9e.jpg",
-  "https://cm.blazefast.co/7f/f9/7ff93c6e759cb8a7c5aa0a222a8627d5.jpg",
-  "https://cm.blazefast.co/6a/d9/6ad91d6324c3d8f01a73654bf9d9c14e.jpg"
+  {
+    "width": 800,
+    "height": 28027,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1365156,
+    "url": "https://cm.blazefast.co/5f/4c/5f4c4df08b0cbd7faf8d0d526584057b.jpg"
+  },
+  {
+    "width": 800,
+    "height": 27777,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1678339,
+    "url": "https://cm.blazefast.co/35/a7/35a76739a5793f2f5594f2d428900f61.jpg"
+  },
+  {
+    "width": 800,
+    "height": 27777,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1458409,
+    "url": "https://cm.blazefast.co/07/35/07359f64d07cbe11c20da3c000570a9e.jpg"
+  },
+  {
+    "width": 800,
+    "height": 27241,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1500643,
+    "url": "https://cm.blazefast.co/7f/f9/7ff93c6e759cb8a7c5aa0a222a8627d5.jpg"
+  },
+  {
+    "width": 800,
+    "height": 26618,
+    "type": "jpg",
+    "mime": "image/jpeg",
+    "wUnits": "px",
+    "hUnits": "px",
+    "length": 1626556,
+    "url": "https://cm.blazefast.co/6a/d9/6ad91d6324c3d8f01a73654bf9d9c14e.jpg"
+  }
 ]

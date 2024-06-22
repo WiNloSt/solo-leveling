@@ -7,17 +7,17 @@ export async function GET(request: NextRequest) {
   const quality = Number(searchParams.get('q'))
   const width = Number(searchParams.get('w'))
   if (!url) {
-    return new Response('No `url` specified.', { status: 400, statusText: 'Bad Request' })
+    return new Response('`url` must be specified.', { status: 400, statusText: 'Bad Request' })
   }
 
-  if (quality < 0 || isNaN(quality)) {
-    return new Response('`q` must be a positive integer from 0 to 100.', {
+  if (quality <= 0) {
+    return new Response('`q` must be a positive integer from 1 to 100.', {
       status: 400,
       statusText: 'Bad Request',
     })
   }
 
-  if (quality < 0 || isNaN(quality)) {
+  if (width <= 0) {
     return new Response('`w` must be a positive integer.', {
       status: 400,
       statusText: 'Bad Request',

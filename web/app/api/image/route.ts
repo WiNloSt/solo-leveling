@@ -32,7 +32,19 @@ export async function GET(request: NextRequest) {
   const metadata = await image.metadata()
   console.log({ metadata })
 
-  const { data, info } = await processImage(image, { width, quality, metadata })
+  if (metadata.width && metadata.width <= width) {
+    console.log('Image is already smaller than requested width, returning original image.')
+    return new Response(imageBuffer, {
+      status: 200,
+      headers: {
+        'Content-Type': 'image/jpeg',
+        'Cache-Control': `public, max-age=${30 * DAY};`,
+        ...(metadata.size && { 'Content-Length': metadata.size.toString() }),
+      },
+    })
+  }
+  const { data, info } = await processImage(image, { width, quality })
+  console.log('Resizing image.')
   return new Response(data, {
     status: 200,
     headers: {
@@ -45,12 +57,6 @@ export async function GET(request: NextRequest) {
 
 const DAY = 24 * 60 * 60
 
-async function processImage(
-  image: Sharp,
-  { quality, width, metadata }: { quality: number; width: number; metadata: Metadata }
-) {
-  return image
-    .resize({ width: width > (metadata.width || NaN) ? metadata.width : width })
-    .jpeg({ quality: quality })
-    .toBuffer({ resolveWithObject: true })
+async function processImage(image: Sharp, { quality, width }: { quality: number; width: number }) {
+  return image.resize({ width }).jpeg({ quality: quality }).toBuffer({ resolveWithObject: true })
 }

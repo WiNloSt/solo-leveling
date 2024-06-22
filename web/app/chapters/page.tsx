@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import chapters from '../../../data/chapters.json'
 import { Chapter } from '../../../types'
+import { LinkNoPrefetch } from '../components/LinkNoPrefetch'
 
 export default function Chapters() {
   return (
@@ -8,9 +8,9 @@ export default function Chapters() {
       {chapters.map((chapter: Chapter) => {
         return (
           <li key={chapter.name} className="p-1">
-            <Link href={`/chapters/${chapter.number}`} className="hover:underline">
+            <LinkNoPrefetch href={`/chapters/${chapter.number}`} className="hover:underline">
               {chapter.name}
-            </Link>
+            </LinkNoPrefetch>
           </li>
         )
       })}

@@ -72,7 +72,11 @@ export async function GET(request: NextRequest) {
 const DAY = 24 * 60 * 60
 
 async function processImage(image: Sharp, { quality, width }: { quality: number; width: number }) {
-  return image.resize({ width }).webp({ quality }).toBuffer({ resolveWithObject: true })
+  return image
+    .resize({ width })
+    .webp({ quality })
+    .toBuffer({ resolveWithObject: true })
+    .catch(() => image.resize({ width }).jpeg({ quality }).toBuffer({ resolveWithObject: true }))
 }
 
 function getHash(buffer: Buffer) {

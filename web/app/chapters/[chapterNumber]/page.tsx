@@ -4,11 +4,26 @@ import chapters from '../../../../data/chapters.json'
 import type { Chapter } from '../../../../types'
 import classNames from 'classnames'
 import { ClientImage } from './ClientImage'
+import type { Metadata } from 'next'
+
+interface ChapterParameters {
+  chapterNumber: string
+}
+
+export async function generateMetadata({
+  params: { chapterNumber },
+}: {
+  params: ChapterParameters
+}) {
+  return {
+    title: chapterNumber,
+  } as Metadata
+}
 
 export default async function Chapter({
   params: { chapterNumber },
 }: {
-  params: { chapterNumber: string }
+  params: ChapterParameters
 }) {
   const pageUrls = (
     await import(`../../../../data/pages/Solo Leveling Chapter ${chapterNumber}.json`)

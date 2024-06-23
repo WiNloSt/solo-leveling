@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type Dispatch, type SetStateAction } from 'react'
 import { QUALITY, createImageUrl } from './utils'
 
 interface ClientImageProps {
@@ -10,6 +10,7 @@ interface ClientImageProps {
   pageNumber: number
   onEnterViewport: () => void
   priority: boolean
+  setRequestImageWidth: Dispatch<SetStateAction<number>>
 }
 
 export function ChapterImage({
@@ -19,12 +20,19 @@ export function ChapterImage({
   pageNumber,
   onEnterViewport,
   priority,
+  setRequestImageWidth,
 }: ClientImageProps) {
   const ref = useIntersectionObserver(onEnterViewport)
   return (
     <Image
       ref={ref}
       loader={createImageUrl}
+      onLoad={(e) => {
+        const width = new URLSearchParams((e.target as HTMLImageElement).currentSrc).get('w')
+        if (width) {
+          setRequestImageWidth(Number(width))
+        }
+      }}
       key={url}
       src={url}
       alt={`Page ${pageNumber}`}

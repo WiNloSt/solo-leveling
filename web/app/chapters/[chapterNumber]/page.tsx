@@ -1,4 +1,3 @@
-'use server'
 import chapters from '@/../data/chapters.json'
 import type { Chapter } from '@/../types'
 import type { Metadata } from 'next'

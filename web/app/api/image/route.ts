@@ -1,6 +1,7 @@
 import type { NextRequest } from 'next/server'
 import sharp, { type Sharp } from 'sharp'
 import crypto from 'crypto'
+import { warmUpCacheForAdjacentChapters } from './utils'
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
@@ -8,6 +9,8 @@ export async function GET(request: NextRequest) {
   const url = searchParams.get('url')
   const quality = Number(searchParams.get('q'))
   const width = Number(searchParams.get('w'))
+  const chapterNumber = Number(searchParams.get('chapter') || '-1')
+
   if (!url) {
     return new Response('`url` must be specified.', { status: 400, statusText: 'Bad Request' })
   }
@@ -25,6 +28,8 @@ export async function GET(request: NextRequest) {
       statusText: 'Bad Request',
     })
   }
+
+  await warmUpCacheForAdjacentChapters(chapterNumber, request.nextUrl)
 
   const imageBuffer = await fetch(url)
     .then((response) => response.blob())

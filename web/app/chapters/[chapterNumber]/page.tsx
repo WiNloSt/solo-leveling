@@ -35,7 +35,7 @@ export default async function Chapter({
   params: ChapterParameters
 }) {
   const pages: ChapterPage[] = (
-    await import(`../../../../data/pages/Solo Leveling Chapter ${chapterNumber}.json`)
+    await import(`@/../data/pages/Solo Leveling Chapter ${chapterNumber}.json`)
   ).default
   const { nextPage, previousPage } = await getNavigation(parseFloat(chapterNumber))
   const chapter: Chapter = chapters.find(

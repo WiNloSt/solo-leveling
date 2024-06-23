@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
     status: 200,
     headers: {
       'Content-Type': 'image/webp',
-      'Cache-Control': `public, max-age=${30 * DAY};`,
+      'Cache-Control': `public, max-age=0, s-maxage=${30 * DAY}, stale-while-revalidate;`,
       'Content-Length': info.size.toString(),
       ETag: eTag,
     },

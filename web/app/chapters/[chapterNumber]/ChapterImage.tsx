@@ -1,8 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
-import { createImageUrl } from './utils'
-import { QUALITY } from './page'
+import { QUALITY, createImageUrl } from './utils'
 
 interface ClientImageProps {
   url: string

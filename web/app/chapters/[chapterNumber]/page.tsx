@@ -30,8 +30,6 @@ export async function generateMetadata({
   } as Metadata
 }
 
-export const QUALITY = 75
-
 export default async function Chapter({
   params: { chapterNumber },
 }: {

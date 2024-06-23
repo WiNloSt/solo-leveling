@@ -5,10 +5,10 @@ import type { NextURL } from 'next/dist/server/web/next-url'
 
 export async function warmUpCacheForAdjacentChapters(chapterNumber: number, requestUrl: NextURL) {
   const env = process.env.VERCEL_ENV
-  console.log({ env })
   const isProduction = env === 'production'
   // Don't do this in development environment because it's calling functions too many times
   if (chapterNumber < 0 || !isProduction) {
+    // if (chapterNumber < 0) {
     return
   }
   const key = `chapter:${chapterNumber}`
@@ -17,8 +17,8 @@ export async function warmUpCacheForAdjacentChapters(chapterNumber: number, requ
     return
   }
 
-  await warmUpCacheForNextChapter(chapterNumber, requestUrl)
-  await warmUpCacheForPreviousChapter(chapterNumber, requestUrl)
+  warmUpCacheForNextChapter(chapterNumber, requestUrl)
+  warmUpCacheForPreviousChapter(chapterNumber, requestUrl)
 
   await deleteLock()
 }
@@ -54,7 +54,7 @@ async function warmUpCacheForChapter(
   await Promise.all(
     pages.map((page) => {
       const url = constructImageUrl(page.url, requestUrl)
-      return fetch(url, { method: 'HEAD' }).catch((e) => {
+      return fetch(url).catch((e) => {
         if (e.name !== 'AbortError') {
           throw e
         }

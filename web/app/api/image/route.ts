@@ -33,18 +33,6 @@ export async function GET(request: NextRequest) {
   const image = sharp(imageBuffer)
   const metadata = await image.metadata()
 
-  // if (metadata.width && metadata.width <= width) {
-  //   console.log('Image is already smaller than requested width, returning original image.')
-  //   return new Response(imageBuffer, {
-  //     status: 200,
-  //     headers: {
-  //       'Content-Type': 'image/jpeg',
-  //       'Cache-Control': `public, max-age=${30 * DAY};`,
-  //       ...(metadata.size && { 'Content-Length': metadata.size.toString() }),
-  //     },
-  //   })
-  // }
-
   const DEFAULT_MAX_IMAGE_WIDTH = 720
   const defaultWidth = metadata.width || DEFAULT_MAX_IMAGE_WIDTH
   const { data, info } = await processImage(image, {

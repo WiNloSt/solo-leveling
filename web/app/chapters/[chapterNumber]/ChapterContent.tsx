@@ -33,7 +33,6 @@ export function ChapterContent({
               pageIndex={pageIndex}
               page={page}
               currentPage={currentPage}
-              chapterNumber={chapter.number}
             />
           )
         })}
@@ -48,13 +47,11 @@ function ChapterImageController({
   pageIndex,
   page,
   currentPage,
-  chapterNumber,
 }: {
   setCurrentPage: Dispatch<SetStateAction<number>>
   pageIndex: number
   page: ChapterPage
   currentPage: number
-  chapterNumber: number
 }) {
   const handlePageEnterViewport = useCallback(() => {
     setCurrentPage((prevPageIndex) => (pageIndex > prevPageIndex ? pageIndex : prevPageIndex))
@@ -68,7 +65,6 @@ function ChapterImageController({
       pageNumber={pageIndex + 1}
       onEnterViewport={handlePageEnterViewport}
       priority={pageIndex <= currentPage + 2}
-      chapterNumber={chapterNumber}
     />
   )
 }

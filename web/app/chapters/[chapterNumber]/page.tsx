@@ -42,6 +42,7 @@ export default async function Chapter({
     (chapter) => chapter.number === parseFloat(chapterNumber)
   ) as Chapter
 
+
   return (
     <ChapterContent
       chapter={chapter}

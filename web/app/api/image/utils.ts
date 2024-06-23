@@ -4,13 +4,6 @@ import type { ChapterPage } from '@/app/chapters/[chapterNumber]/page'
 import type { NextURL } from 'next/dist/server/web/next-url'
 
 export async function warmUpCacheForAdjacentChapters(chapterNumber: number, requestUrl: NextURL) {
-  const env = process.env.VERCEL_ENV
-  const isProduction = env === 'production'
-  // Don't do this in development environment because it's calling functions too many times
-  if (chapterNumber < 0 || !isProduction) {
-    // if (chapterNumber < 0) {
-    return
-  }
   const key = `chapter:${chapterNumber}`
   const [isLockedAcquired, deleteLock] = await createLock(key)
   if (!isLockedAcquired) {

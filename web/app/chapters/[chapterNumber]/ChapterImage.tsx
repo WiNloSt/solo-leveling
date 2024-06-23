@@ -9,7 +9,6 @@ interface ClientImageProps {
   pageNumber: number
   onEnterViewport: () => void
   priority: boolean
-  chapterNumber: number
 }
 
 export function ChapterImage({
@@ -19,13 +18,12 @@ export function ChapterImage({
   pageNumber,
   onEnterViewport,
   priority,
-  chapterNumber,
 }: ClientImageProps) {
   const ref = useIntersectionObserver(onEnterViewport)
   return (
     <Image
       ref={ref}
-      loader={customImageLoader(chapterNumber)}
+      loader={customImageLoader}
       key={url}
       src={url}
       alt={`Page ${pageNumber}`}
@@ -39,10 +37,8 @@ export function ChapterImage({
   )
 }
 
-function customImageLoader(chapterNumber: number) {
-  return ({ src, width, quality }: ImageLoaderProps) => {
-    return `/api/image?url=${src}&w=${width}&q=${quality || 80}&chapter=${chapterNumber}`
-  }
+function customImageLoader({ src, width, quality }: ImageLoaderProps) {
+  return `/api/image?url=${src}&w=${width}&q=${quality || 80}`
 }
 
 function useIntersectionObserver(onEnterViewport: () => void) {

@@ -1,6 +1,8 @@
 'use client'
-import Image, { type ImageLoaderProps } from 'next/image'
+import Image from 'next/image'
 import { useEffect, useRef } from 'react'
+import { createImageUrl } from './utils'
+import { QUALITY } from './page'
 
 interface ClientImageProps {
   url: string
@@ -23,22 +25,18 @@ export function ChapterImage({
   return (
     <Image
       ref={ref}
-      loader={customImageLoader}
+      loader={createImageUrl}
       key={url}
       src={url}
       alt={`Page ${pageNumber}`}
       width={width}
       height={height}
-      quality={75}
+      quality={QUALITY}
       sizes="(max-width: 1279px) 540px, 100vw"
       className="max-w-lg xl:max-w-[720px] w-full"
       priority={priority}
     />
   )
-}
-
-function customImageLoader({ src, width, quality }: ImageLoaderProps) {
-  return `/api/image?url=${src}&w=${width}&q=${quality || 80}`
 }
 
 function useIntersectionObserver(onEnterViewport: () => void) {

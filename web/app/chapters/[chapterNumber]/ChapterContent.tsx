@@ -1,24 +1,33 @@
 'use client'
-import type { Chapter } from '@/../types'
+import chapters from '@/../data/chapters.json'
 import { ChapterImage } from './ChapterImage'
-import { useCallback, useState, type Dispatch, type SetStateAction } from 'react'
+import { useCallback, useEffect, useState, type Dispatch, type SetStateAction } from 'react'
 import { LinkNoPrefetch } from '@/components/LinkNoPrefetch'
 import classNames from 'classnames'
 import Image from 'next/image'
-import type { ChapterPage } from './page'
+import { createImageUrl, loadPages } from './utils'
+
+import { QUALITY, type ChapterPage } from './page'
+import type { Chapter } from '@/../types'
 
 export function ChapterContent({
-  chapter,
+  chapterIndex,
   nextPage,
   previousPage,
   pages,
 }: {
-  chapter: Chapter
+  chapterIndex: number
   nextPage: number
   previousPage: number
   pages: ChapterPage[]
 }) {
+  const chapter = chapters[chapterIndex]
   const [currentPage, setCurrentPage] = useState(0)
+
+  useEffect(() => {
+    warmUpCacheForChapter(chapters[chapterIndex + 1])
+    warmUpCacheForChapter(chapters[chapterIndex - 1])
+  })
 
   return (
     <>
@@ -40,6 +49,23 @@ export function ChapterContent({
       </div>
     </>
   )
+}
+
+async function warmUpCacheForChapter(chapter: Chapter) {
+  if (chapter) {
+    const pages = await loadPages(chapter.number)
+    return Promise.all(
+      pages.map((page) =>
+        fetch(
+          createImageUrl({
+            src: page.url,
+            width: page.width,
+            quality: QUALITY,
+          })
+        )
+      )
+    )
+  }
 }
 
 function ChapterImageController({

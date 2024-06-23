@@ -3,6 +3,7 @@ import chapters from '@/../data/chapters.json'
 import type { Chapter } from '@/../types'
 import type { Metadata } from 'next'
 import { ChapterContent } from './ChapterContent'
+import { loadPages } from './utils'
 
 interface ChapterParameters {
   chapterNumber: string
@@ -29,23 +30,22 @@ export async function generateMetadata({
   } as Metadata
 }
 
+export const QUALITY = 75
+
 export default async function Chapter({
   params: { chapterNumber },
 }: {
   params: ChapterParameters
 }) {
-  const pages: ChapterPage[] = (
-    await import(`@/../data/pages/Solo Leveling Chapter ${chapterNumber}.json`)
-  ).default
-  const { nextPage, previousPage } = await getNavigation(parseFloat(chapterNumber))
-  const chapter: Chapter = chapters.find(
+  const pages = await loadPages(chapterNumber)
+  const { nextPage, previousPage } = await getNavigation(Number(chapterNumber))
+  const chapterIndex: number = chapters.findIndex(
     (chapter) => chapter.number === parseFloat(chapterNumber)
-  ) as Chapter
-
+  )
 
   return (
     <ChapterContent
-      chapter={chapter}
+      chapterIndex={chapterIndex}
       nextPage={nextPage}
       previousPage={previousPage}
       pages={pages}

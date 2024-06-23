@@ -44,17 +44,21 @@ async function warmUpCacheForPreviousChapter(chapterNumber: number, requestUrl: 
 }
 
 async function warmUpCacheForChapter(
-  nextChapter: { name: string; link: string; number: number },
+  chapter: { name: string; link: string; number: number },
   requestUrl: NextURL
 ) {
   const pages: ChapterPage[] = (
-    await import(`@/../data/pages/Solo Leveling Chapter ${nextChapter.number}.json`)
+    await import(`@/../data/pages/Solo Leveling Chapter ${chapter.number}.json`)
   ).default
 
   await Promise.all(
     pages.map((page) => {
-      const url = constructImageUrl(page.url, requestUrl)
-      return fetch(url).catch((e) => {
+      const url = constructImageUrl(page.url, chapter.number, requestUrl)
+      return fetch(url, {
+        headers: {
+          'X-Do-Not-Prefetch-Chapters': 'true',
+        },
+      }).catch((e) => {
         if (e.name !== 'AbortError') {
           throw e
         }
@@ -63,9 +67,11 @@ async function warmUpCacheForChapter(
   )
 }
 
-function constructImageUrl(url: string, requestUrl: NextURL) {
+function constructImageUrl(url: string, chapterNumber: number, requestUrl: NextURL) {
   const params = new URLSearchParams(requestUrl.searchParams)
-  params.delete('chapter')
   params.set('url', url)
-  return new URL(`/api/image?${params.toString()}`, requestUrl.origin)
+  return new URL(
+    `/api/image?url=${url}&w=${params.get('w')}&q=${params.get('q')}&chapter=${chapterNumber}`,
+    requestUrl.origin
+  )
 }

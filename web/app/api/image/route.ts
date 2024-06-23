@@ -6,6 +6,7 @@ import { warmUpCacheForAdjacentChapters } from './utils'
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const ifNoneMatch = request.headers.get('If-None-Match')
+  const doNotPreFetchHeaders = request.headers.get('X-Do-Not-Prefetch-Chapters')
   const url = searchParams.get('url')
   const quality = Number(searchParams.get('q'))
   const width = Number(searchParams.get('w'))
@@ -29,7 +30,9 @@ export async function GET(request: NextRequest) {
     })
   }
 
-  await warmUpCacheForAdjacentChapters(chapterNumber, request.nextUrl)
+  if (!doNotPreFetchHeaders) {
+    await warmUpCacheForAdjacentChapters(chapterNumber, request.nextUrl)
+  }
 
   const imageBuffer = await fetch(url)
     .then((response) => response.blob())

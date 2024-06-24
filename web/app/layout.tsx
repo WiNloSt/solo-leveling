@@ -4,6 +4,7 @@ import './globals.css'
 import classNames from 'classnames'
 import { Header } from '@/components/Header'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <Header />
         <div className="max-w-7xl mx-auto py-3 px-4">{children}</div>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )

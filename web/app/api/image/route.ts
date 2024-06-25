@@ -49,15 +49,17 @@ export async function GET(request: NextRequest) {
 
   const eTag = getHash(data)
   console.log({ original: metadata, resized: info, ifNoneMatch, eTag })
-  if (ifNoneMatch === eTag) {
-    return new Response(null, { status: 304, statusText: 'Not Modified' })
-  }
+  // ensure we send the new cache control
+  // if (ifNoneMatch === eTag) {
+  //   return new Response(null, { status: 304, statusText: 'Not Modified' })
+  // }
 
   return new Response(data, {
     status: 200,
     headers: {
       'Content-Type': 'image/webp',
       'Cache-Control': `public, s-maxage=${30 * DAY}, stale-while-revalidate=${30 * DAY};`,
+      'CDN-Cache-Control': `public, s-maxage=${30 * DAY}, stale-while-revalidate=${30 * DAY};`,
       'Content-Length': info.size.toString(),
       ETag: eTag,
     },

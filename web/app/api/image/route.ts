@@ -1,6 +1,8 @@
 import type { NextRequest } from 'next/server'
 import sharp, { type Sharp } from 'sharp'
 import crypto from 'crypto'
+import nextConfig from '@/next.config.mjs'
+import { hasMatch } from './utils'
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
@@ -11,6 +13,10 @@ export async function GET(request: NextRequest) {
 
   if (!url) {
     return new Response('`url` must be specified.', { status: 400, statusText: 'Bad Request' })
+  }
+
+  if (!verifyAllowedUrl(url)) {
+    return new Response(`"${url}" is not allowed.`, { status: 403, statusText: 'Forbidden' })
   }
 
   if (quality <= 0) {
@@ -56,6 +62,15 @@ export async function GET(request: NextRequest) {
       ETag: eTag,
     },
   })
+}
+
+function verifyAllowedUrl(url: string) {
+  const remotePatterns = nextConfig.images?.remotePatterns
+  if (!remotePatterns) {
+    return false
+  }
+
+  return hasMatch(remotePatterns, new URL(url))
 }
 
 const DAY = 24 * 60 * 60

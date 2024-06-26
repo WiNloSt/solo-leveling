@@ -29,6 +29,7 @@ export async function generateMetadata({
   } as Metadata
 }
 
+export const dynamic = 'force-static'
 export default async function Chapter({
   params: { chapterNumber },
 }: {

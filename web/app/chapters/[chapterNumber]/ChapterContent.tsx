@@ -58,8 +58,9 @@ export function ChapterContent({
 async function warmUpCacheForChapter(chapter: Chapter, imageWidth: number) {
   if (chapter) {
     const pages = await loadPages(chapter.number)
+    const PRELOAD_TO_PAGE_INDEX = 0
     return Promise.all(
-      pages.map((page) =>
+      pages.slice(0, PRELOAD_TO_PAGE_INDEX + 1).map((page) =>
         fetch(
           createImageUrl({
             src: page.url,
@@ -86,8 +87,12 @@ function ChapterImageController({
   setRequestImageWidth: Dispatch<SetStateAction<number>>
 }) {
   const handlePageEnterViewport = useCallback(() => {
-    setCurrentPage((prevPageIndex) => (pageIndex > prevPageIndex ? pageIndex : prevPageIndex))
+    setCurrentPage(pageIndex)
   }, [pageIndex, setCurrentPage])
+
+  const PRELOAD_PAGE_OFFSET = 2
+  const priority =
+    pageIndex >= currentPage - PRELOAD_PAGE_OFFSET && pageIndex <= currentPage + PRELOAD_PAGE_OFFSET
 
   return (
     <ChapterImage
@@ -96,7 +101,7 @@ function ChapterImageController({
       height={page.height}
       pageNumber={pageIndex + 1}
       onEnterViewport={handlePageEnterViewport}
-      priority={pageIndex <= currentPage + 2}
+      priority={priority}
       setRequestImageWidth={setRequestImageWidth}
     />
   )

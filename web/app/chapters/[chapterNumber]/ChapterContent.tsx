@@ -24,6 +24,7 @@ export function ChapterContent({
   const chapter = chapters[chapterIndex]
   const [currentPage, setCurrentPage] = useState(0)
   const [requestedImageWidth, setRequestImageWidth] = useState(0)
+  const shouldPreloadCurrentChapterPages = usePreloadCurrentChapterPages()
 
   useEffect(() => {
     if (requestedImageWidth > 0) {
@@ -46,6 +47,7 @@ export function ChapterContent({
               page={page}
               currentPage={currentPage}
               setRequestImageWidth={setRequestImageWidth}
+              shouldPreloadCurrentChapterPages={shouldPreloadCurrentChapterPages}
             />
           )
         })}
@@ -53,6 +55,26 @@ export function ChapterContent({
       </div>
     </>
   )
+}
+
+function usePreloadCurrentChapterPages(): boolean {
+  const [shouldPreload, setShouldPreload] = useState(false)
+  useEffect(() => {
+    const SCROLL_THRESHOLD = 300
+    const onScroll = () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        setShouldPreload(true)
+        document.removeEventListener('scroll', onScroll)
+      }
+    }
+    document.addEventListener('scroll', onScroll)
+
+    return () => {
+      document.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
+  return shouldPreload
 }
 
 async function warmUpCacheForChapter(chapter: Chapter, imageWidth: number) {
@@ -73,19 +95,23 @@ async function warmUpCacheForChapter(chapter: Chapter, imageWidth: number) {
   }
 }
 
+interface ChapterImageControllerProps {
+  setCurrentPage: Dispatch<SetStateAction<number>>
+  pageIndex: number
+  page: ChapterPage
+  currentPage: number
+  setRequestImageWidth: Dispatch<SetStateAction<number>>
+  shouldPreloadCurrentChapterPages: boolean
+}
+
 function ChapterImageController({
   setCurrentPage,
   pageIndex,
   page,
   currentPage,
   setRequestImageWidth,
-}: {
-  setCurrentPage: Dispatch<SetStateAction<number>>
-  pageIndex: number
-  page: ChapterPage
-  currentPage: number
-  setRequestImageWidth: Dispatch<SetStateAction<number>>
-}) {
+  shouldPreloadCurrentChapterPages,
+}: ChapterImageControllerProps) {
   const handlePageEnterViewport = useCallback(() => {
     setCurrentPage(pageIndex)
   }, [pageIndex, setCurrentPage])
@@ -101,7 +127,7 @@ function ChapterImageController({
       height={page.height}
       pageNumber={pageIndex + 1}
       onEnterViewport={handlePageEnterViewport}
-      priority={priority}
+      priority={shouldPreloadCurrentChapterPages && priority}
       setRequestImageWidth={setRequestImageWidth}
     />
   )

@@ -12,5 +12,5 @@
   animation-name: scaleProgress;
   transform-origin: left;
   /* animation-duration: auto; */
-  /* animation-timing-function: linear; */
+  animation-timing-function: linear;
 }

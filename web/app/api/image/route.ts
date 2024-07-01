@@ -38,10 +38,27 @@ export async function GET(request: NextRequest) {
     .then((blob) => blob.arrayBuffer())
 
   const image = sharp(imageBuffer)
-  const metadata = await image.metadata()
+  console.log({ imageBuffer, url })
+
+  let metadata
+  try {
+    metadata = await image.metadata()
+  } catch (e) {
+    console.error('Can not get metadata')
+  }
+
+  if (!metadata) {
+    return new Response(imageBuffer, {
+      status: 200,
+      headers: {
+        'Cache-Control': `public, s-maxage=${30 * DAY}, stale-while-revalidate=${30 * DAY};`,
+        'CDN-Cache-Control': `public, s-maxage=${30 * DAY}, stale-while-revalidate=${30 * DAY};`,
+      },
+    })
+  }
 
   const DEFAULT_MAX_IMAGE_WIDTH = 720
-  const defaultWidth = metadata.width || DEFAULT_MAX_IMAGE_WIDTH
+  const defaultWidth = metadata?.width || DEFAULT_MAX_IMAGE_WIDTH
   const { data, info } = await processImage(image, {
     width: width <= defaultWidth ? width : defaultWidth,
     quality,

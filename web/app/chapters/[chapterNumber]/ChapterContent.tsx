@@ -9,6 +9,8 @@ import { QUALITY, createImageUrl, loadPages } from './utils'
 
 import { type ChapterPage } from './page'
 import type { Chapter } from '@/../types'
+import { useIntersectionObserver } from './useIntersectionObserver'
+import style from './style.module.css'
 
 export function ChapterContent({
   chapterIndex,
@@ -33,9 +35,18 @@ export function ChapterContent({
     }
   }, [chapterIndex, requestedImageWidth])
 
+  const { ref, shouldShowProgress } = useShowProgress()
+
   return (
     <>
       <h1 className="text-xl">{chapter.name}</h1>
+      <span ref={ref}>{/* Progress bar IntersectionObserver ref */}</span>
+      <div
+        className={classNames('fixed top-0 h-1 bg-blue-400 w-full left-0', style.progress, {
+          hidden: !shouldShowProgress,
+        })}>
+        {/* Progress bar */}
+      </div>
       <div className="flex flex-col items-center -mx-4">
         <Navigation next={nextPage} previous={previousPage} />
         {pages.map((page, pageIndex) => {
@@ -112,9 +123,14 @@ function ChapterImageController({
   setRequestImageWidth,
   shouldPreloadCurrentChapterPages,
 }: ChapterImageControllerProps) {
-  const handlePageEnterViewport = useCallback(() => {
-    setCurrentPage(pageIndex)
-  }, [pageIndex, setCurrentPage])
+  const handlePageEnterViewport = useCallback(
+    (isIntersecting: boolean) => {
+      if (isIntersecting) {
+        setCurrentPage(pageIndex)
+      }
+    },
+    [pageIndex, setCurrentPage]
+  )
 
   const PRELOAD_PAGE_OFFSET = 2
   const priority =
@@ -162,4 +178,14 @@ function Navigation({ previous, next }: { previous: number; next: number }) {
       </LinkNoPrefetch>
     </div>
   )
+}
+
+function useShowProgress() {
+  const [shouldShowProgress, setShouldShowProgress] = useState(false)
+  const handleShowProgress = useCallback((isIntersecting: boolean) => {
+    setShouldShowProgress(!isIntersecting)
+  }, [])
+  const ref = useIntersectionObserver(handleShowProgress)
+
+  return { shouldShowProgress, ref }
 }

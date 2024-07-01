@@ -1,14 +1,15 @@
 'use client'
 import Image from 'next/image'
-import { useEffect, useRef, type Dispatch, type SetStateAction } from 'react'
+import { type Dispatch, type SetStateAction } from 'react'
 import { QUALITY, createImageUrl } from './utils'
+import { useIntersectionObserver } from './useIntersectionObserver'
 
 interface ClientImageProps {
   url: string
   width: number | undefined
   height: number | undefined
   pageNumber: number
-  onEnterViewport: () => void
+  onEnterViewport: (isIntersecting: boolean) => void
   priority: boolean
   setRequestImageWidth: Dispatch<SetStateAction<number>>
 }
@@ -44,34 +45,4 @@ export function ChapterImage({
       priority={priority}
     />
   )
-}
-
-function useIntersectionObserver(onEnterViewport: () => void) {
-  const ref = useRef<HTMLImageElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            onEnterViewport()
-          }
-        })
-      },
-      {
-        threshold: 0,
-      }
-    )
-
-    if (ref.current) {
-      const refNode = ref.current
-      observer.observe(ref.current)
-
-      return () => {
-        observer.unobserve(refNode)
-      }
-    }
-  }, [onEnterViewport])
-
-  return ref
 }

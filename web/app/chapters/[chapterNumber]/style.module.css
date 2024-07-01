@@ -1,0 +1,16 @@
+@keyframes scaleProgress {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.progress {
+  animation-timeline: scroll();
+  animation-name: scaleProgress;
+  transform-origin: left;
+  /* animation-duration: auto; */
+  /* animation-timing-function: linear; */
+}
